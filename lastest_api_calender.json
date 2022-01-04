@@ -1,0 +1,856 @@
+{
+	"info": {
+		"_postman_id": "e2a392c0-deef-448f-8f4a-3217e4e199ea",
+		"name": "API's",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "accounts",
+			"item": [
+				{
+					"name": "register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"get_token = pm.response.json().token",
+									"pm.environment.set(\"token\", \"get_token\");",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"Shakib\",\n    \"email\":\"shakib@gmail.com\",\n    \"password\":\"sk.01\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}account/api/user-register/",
+							"host": [
+								"{{url}}account"
+							],
+							"path": [
+								"api",
+								"user-register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"get_token = pm.response.json().token",
+									"pm.environment.set(\"token\", get_token);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"rana@gmail.com\",\n    \"password\":\"12\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}account/api/user-login/",
+							"host": [
+								"{{url}}account"
+							],
+							"path": [
+								"api",
+								"user-login",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "calenders",
+			"item": [
+				{
+					"name": "single_calender_update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \n    \"calender_name\": \"Birthday\",\n    \"user\": 1,\n    \"select_fig\": false,\n    \"calender_event\": [],\n    \"calender_attendee\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}api/calenders/34/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"calenders",
+								"34",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"calender_name\":\"december 25\",\n    \"select_fig\":true\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}api/calenders/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"calenders",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all_calenders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}api/calenders/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"calenders",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "single_calender_delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \n    \"calender_name\": \"Birthday\",\n    \"user\": 2,\n    \"select_fig\": true,\n    \"calender_event\": [],\n    \"calender_attendee\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}api/calenders/34/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"calenders",
+								"34",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "single_calender",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}api/calenders/21",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"calenders",
+								"21"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "events",
+			"item": [
+				{
+					"name": "single_event",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}api/events/3/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"events",
+								"3",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create_event",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n   \n        \"event_name\": \"Coding\",\n        \"event_description\": \"hdfvhjfd\",\n        \"event_start_date\": \"2021-12-24T05:43:22Z\",\n        \"event_end_date\": \"2021-12-24T06:43:33Z\",\n        \"event_location\": \"dhaka\",\n        \"inperson_flg\": 0,\n        \"travel_flg\": 0,\n        \"zoom_flg\": 0,\n        \"msteams_flg\": 1,\n        \"gmeet_flg\": 0,\n        \"lunch_flg\": 0,\n        \"dinner_flg\": 0,\n        \"oneonone_flg\": 0,\n        \"all_day_flg\": 0,\n        \"calender_info\": 31\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}api/events/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"events",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all_events",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n   \n        \"event_name\": \"Coding\",\n        \"event_description\": \"hdfvhjfd\",\n        \"event_start_date\": \"2021-12-24T05:43:22Z\",\n        \"event_end_date\": \"2021-12-24T06:43:33Z\",\n        \"event_location\": \"dhaka\",\n        \"inperson_flg\": 0,\n        \"travel_flg\": 0,\n        \"zoom_flg\": 0,\n        \"msteams_flg\": 1,\n        \"gmeet_flg\": 0,\n        \"lunch_flg\": 0,\n        \"dinner_flg\": 0,\n        \"oneonone_flg\": 0,\n        \"all_day_flg\": 0,\n        \"calender_info\": 31\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}api/events/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"events",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_event",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n   \n        \"event_name\": \"Testing\",\n        \"event_description\": \"hdfvhjfd\",\n        \"event_start_date\": \"2021-12-24T05:43:22Z\",\n        \"event_end_date\": \"2021-12-24T06:43:33Z\",\n        \"event_location\": \"dhaka\",\n        \"inperson_flg\": 1,\n        \"travel_flg\": 1,\n        \"zoom_flg\": 1,\n        \"msteams_flg\": 0,\n        \"gmeet_flg\": 1,\n        \"lunch_flg\": 1,\n        \"dinner_flg\": 1,\n        \"oneonone_flg\": 1,\n        \"all_day_flg\": 1,\n        \"calender_info\": 31\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}api/events/22/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"events",
+								"22",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_event",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n   \n        \"event_name\": \"Testing\",\n        \"event_description\": \"hdfvhjfd\",\n        \"event_start_date\": \"2021-12-24T05:43:22Z\",\n        \"event_end_date\": \"2021-12-24T06:43:33Z\",\n        \"event_location\": \"dhaka\",\n        \"inperson_flg\": 1,\n        \"travel_flg\": 1,\n        \"zoom_flg\": 1,\n        \"msteams_flg\": 0,\n        \"gmeet_flg\": 1,\n        \"lunch_flg\": 1,\n        \"dinner_flg\": 1,\n        \"oneonone_flg\": 1,\n        \"all_day_flg\": 1,\n        \"calender_info\": 31\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}api/events/22/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"events",
+								"22",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "attendees",
+			"item": [
+				{
+					"name": "all_attendees",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}api/attendees/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"attendees",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "single_attendee",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}api/attendees/16/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"attendees",
+								"16",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create_attendee",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 16,\n    \"event_attendee\": \"Setu\",\n    \"event_email\": \"setu@gmail.com\",\n    \"response_status\": \"accepted\",\n    \"self_flg\": 0,\n    \"event_info\": 3\n  \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}api/attendees/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"attendees",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_attendee",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n \n    \"event_attendee\": \"Shakib Al hasan\",\n    \"event_email\": \"rana@gmail.com\",\n    \"response_status\": \"accepted\",\n    \"self_flg\": 0,\n    \"event_info\": 3\n  \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}api/attendees/19/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"attendees",
+								"19",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_attendee",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 16,\n    \"event_attendee\": \"Rana\",\n    \"event_email\": \"rana@gmail.com\",\n    \"response_status\": \"accepted\",\n    \"self_flg\": 0,\n    \"event_info\": 3\n  \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}api/attendees/19/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"attendees",
+								"19",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "others",
+			"item": [
+				{
+					"name": "event_search",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}api/event-search/?q=",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"event-search",
+								""
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": [
+						{
+							"name": "calenderwitheventwithattendees",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"calender_name\": \"Remider\",\n    \"user\": 1,\n    \"select_fig\": false,\n    \"calender_event\": {\n        \"event_name\": \"Lunch\",\n        \"event_description\": \"jfkgdbkjngdkj\",\n        \"event_start_date\": \"2021-12-25T13:03:56\",\n        \"event_end_date\": \"2021-12-25T14:04:02\",\n        \"event_location\": \"Dhaka\",\n        \"inperson_flg\": 0,\n        \"travel_flg\": 0,\n        \"zoom_flg\": 0,\n        \"msteams_flg\": 0,\n        \"gmeet_flg\": 1,\n        \"lunch_flg\": 0,\n        \"dinner_flg\": 0,\n        \"oneonone_flg\": 0,\n        \"all_day_flg\": 0\n    },\n    \"calender_attendee\": [\n        {\n            \"event_attendee\": \"Rana\",\n            \"event_email\": \"rana@gmail.com\",\n            \"response_status\": \"accepted\",\n            \"self_flg\": 1\n        },\n        {\n            \"event_attendee\": \"asad\",\n            \"event_email\": \"asad@gmail.com\",\n            \"response_status\": \"accepted\",\n            \"self_flg\": 0\n        },\n        {\n            \"event_attendee\": \"robin\",\n            \"event_email\": \"robin@gmail.com\",\n            \"response_status\": \"accepted\",\n            \"self_flg\": 0\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}api/create/",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"create",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 25 Dec 2021 13:44:59 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.6.9"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1078"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 43,\n    \"calender_name\": \"Remider\",\n    \"user\": 1,\n    \"select_fig\": false,\n    \"calender_event\": [\n        {\n            \"id\": 27,\n            \"event_name\": \"Lunch\",\n            \"event_description\": \"jfkgdbkjngdkj\",\n            \"event_start_date\": \"2021-12-25T13:03:56\",\n            \"event_end_date\": \"2021-12-25T14:04:02\",\n            \"event_location\": \"Dhaka\",\n            \"inperson_flg\": 0,\n            \"travel_flg\": 0,\n            \"zoom_flg\": 0,\n            \"msteams_flg\": 0,\n            \"gmeet_flg\": 1,\n            \"lunch_flg\": 0,\n            \"dinner_flg\": 0,\n            \"oneonone_flg\": 0,\n            \"all_day_flg\": 0,\n            \"created_at\": \"2021-12-25T13:44:57.852990\",\n            \"updated_at\": \"2021-12-25T13:44:57.853016\",\n            \"calender_info\": 43\n        }\n    ],\n    \"calender_attendee\": [\n        {\n            \"id\": 23,\n            \"event_attendee\": \"Rana\",\n            \"event_email\": \"rana@gmail.com\",\n            \"response_status\": \"accepted\",\n            \"self_flg\": 1,\n            \"event_info\": 27,\n            \"calender_info\": 43\n        },\n        {\n            \"id\": 24,\n            \"event_attendee\": \"asad\",\n            \"event_email\": \"asad@gmail.com\",\n            \"response_status\": \"accepted\",\n            \"self_flg\": 0,\n            \"event_info\": 27,\n            \"calender_info\": 43\n        },\n        {\n            \"id\": 25,\n            \"event_attendee\": \"robin\",\n            \"event_email\": \"robin@gmail.com\",\n            \"response_status\": \"accepted\",\n            \"self_flg\": 0,\n            \"event_info\": 27,\n            \"calender_info\": 43\n        },\n        {\n            \"id\": 26,\n            \"event_attendee\": null,\n            \"event_email\": \"rana@gmail.com\",\n            \"response_status\": null,\n            \"self_flg\": 1,\n            \"event_info\": 27,\n            \"calender_info\": 43\n        }\n    ]\n}"
+						},
+						{
+							"name": "calenderwitheventwithoutattendeee",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"calender_name\": \"Remider\",\n    \"user\": 1,\n    \"select_fig\": false,\n    \"calender_event\": {\n        \"event_name\": \"Lunch\",\n        \"event_description\": \"jfkgdbkjngdkj\",\n        \"event_start_date\": \"2021-12-25T13:03:56\",\n        \"event_end_date\": \"2021-12-25T14:04:02\",\n        \"event_location\": \"Dhaka\",\n        \"inperson_flg\": 0,\n        \"travel_flg\": 0,\n        \"zoom_flg\": 0,\n        \"msteams_flg\": 0,\n        \"gmeet_flg\": 1,\n        \"lunch_flg\": 0,\n        \"dinner_flg\": 0,\n        \"oneonone_flg\": 0,\n        \"all_day_flg\": 0\n    },\n    \"calender_attendee\": []\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}api/create/",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"create",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 25 Dec 2021 13:48:02 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.6.9"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "650"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 44,\n    \"calender_name\": \"Remider\",\n    \"user\": 1,\n    \"select_fig\": false,\n    \"calender_event\": [\n        {\n            \"id\": 28,\n            \"event_name\": \"Lunch\",\n            \"event_description\": \"jfkgdbkjngdkj\",\n            \"event_start_date\": \"2021-12-25T13:03:56\",\n            \"event_end_date\": \"2021-12-25T14:04:02\",\n            \"event_location\": \"Dhaka\",\n            \"inperson_flg\": 0,\n            \"travel_flg\": 0,\n            \"zoom_flg\": 0,\n            \"msteams_flg\": 0,\n            \"gmeet_flg\": 1,\n            \"lunch_flg\": 0,\n            \"dinner_flg\": 0,\n            \"oneonone_flg\": 0,\n            \"all_day_flg\": 0,\n            \"created_at\": \"2021-12-25T13:48:02.125106\",\n            \"updated_at\": \"2021-12-25T13:48:02.125150\",\n            \"calender_info\": 44\n        }\n    ],\n    \"calender_attendee\": [\n        {\n            \"id\": 27,\n            \"event_attendee\": null,\n            \"event_email\": \"rana@gmail.com\",\n            \"response_status\": null,\n            \"self_flg\": 1,\n            \"event_info\": 28,\n            \"calender_info\": 44\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "today_event",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}api/today-event/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"today-event",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
